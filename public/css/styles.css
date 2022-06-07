@@ -1,0 +1,94 @@
+/* font styling: font-family: 'Joan',
+serif; */
+
+/* colors: #2d5871, #673f39, #33b0e4,#a8802d , #524342*/
+
+
+
+body {
+    background-color: #c0b89f;
+    /* background-color: #2d5871; */
+    font-family: 'Joan',
+        serif;
+}
+
+
+.d-flex {
+    background-color: #2d5871;
+    /* background-color: #c0b89f; */
+
+}
+
+.bbrg {
+    list-style-type: none;
+}
+
+.container-m {
+    background-color: #2d5871;
+    font-family: 'Joan',
+        serif;
+    max-width: 1000px;
+}
+
+/* main {
+    align-items: center;
+} */
+
+.lead a {
+    text-decoration: none;
+    /* align-items: center; */
+}
+
+.lead {
+    align-items: center;
+}
+
+a {
+    color: black;
+}
+
+.col {
+    color: black;
+}
+
+.container-xxl {
+    /* background-color: #2d5871; */
+    background-color: #c0b89f;
+    font-family: 'Joan',
+        serif;
+}
+
+/* blog category card */
+.category__link {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: 250ms all;
+}
+
+.category__link:hover {
+    transform: scale(1.1);
+}
+
+.category__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    /* width: 100px; */
+    margin-bottom: 10px;
+    box-shadow: 0px, 3px, 6px, rgba(0, 0, 0, .16);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.category__image--Large {
+    height: 330px;
+    width: auto;
+}
+
+.category__image img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
