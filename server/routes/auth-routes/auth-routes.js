@@ -10,10 +10,10 @@ router.use(express.urlencoded({ extended: true }));
 const path2 = require("path");
 
 
-router.get('/clients', function(req, res) {
+router.get('/clients/signup', function(req, res) {
     res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
   });
-router.post('/clients', (req, res)=>{ //build client object from form data
+router.post('/clients/signup', (req, res)=>{ //build client object from form data
     const client = new Client({
         userName: req.body.userName,
         email: req.body.email,
@@ -22,10 +22,10 @@ router.post('/clients', (req, res)=>{ //build client object from form data
     console.log(client)
 
     client.save().then((newClient)=>{ //this saved the client object to the database
-        res.send(newClient)
+        res.status(201).send(newClient)
         console.log(req.body)
     }).catch((error)=>{
-        res.send(error)
+        res.status(400).send(error)
         console.log(error)
     });
 });

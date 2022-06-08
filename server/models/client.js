@@ -16,7 +16,13 @@ const Client = mongoose.model('Client', {
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minLength: 7,
+        validate(value){
+            if (value.toLowerCase().includes("password")){
+                throw new Error("Password cannot contain 'password' ")
+            }
+        }
     }
 });
 
