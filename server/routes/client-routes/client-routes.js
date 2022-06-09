@@ -11,7 +11,14 @@ const path2 = require("path");
 
 
 router.get('/clients', function(req, res) {
-    res.send("List All Clients For Admin");
+    Client.find({}).then((all_clients)=>{ //grabs all clients from DB
+        if(!all_clients){
+            return res.status(404).send("error");
+        }
+        res.status(200).send(all_clients);
+    }).catch((error)=>{
+        res.status(404).send(error);
+    })
     // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
   });
 
