@@ -9,11 +9,13 @@ router.use(express.urlencoded({ extended: true }));
 // const path = require('path');
 const path2 = require("path");
 const { resolveNaptr } = require("dns");
+const expressLayouts = require('express-ejs-layouts');
+
 
 
 router.get('/clients/signup', function(req, res) {
     // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
-    res.render('sign-up');
+    res.render('signup');
   });
 router.post('/clients/signup', async (req, res)=>{ //build client object from form data
     const client = new Client({
@@ -40,10 +42,11 @@ router.post('/clients/login', async (req, res)=>{
 
     try {
         const client = await Client.findByCredentials(req.body.email, req.body.password)
-        res.send(client);
+        const jwtToken = await client.generateToken()
+        res.send({client, jwtToken});
     }catch(error){
+        console.log(error)
         res.status(400).send()
     }
-
 })
 module.exports = router;

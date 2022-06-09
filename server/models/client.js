@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken')
 const clientSchema = new mongoose.Schema({
     userName: {
         type: String
@@ -24,8 +25,22 @@ const clientSchema = new mongoose.Schema({
                 throw new Error("Password cannot contain 'password' ")
             }
         }
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
+
+clientSchema.methods.generateToken = async function(){
+    const client = this
+    const token = jwt.sign({ _id: client._id.toString()}, 'CogitoErgoSum')
+    client.tokens = client.tokens.concat({ token })
+    await client.save()
+    return token
+}
 /** Middleware this hashes our password using BCryptjs just before we save
  * (first argument is the action we want to run the middleware on)  a client to the DB*/
 clientSchema.pre('save', async function(next){ 
