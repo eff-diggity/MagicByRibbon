@@ -9,10 +9,11 @@ const ribbonController = require('../controllers/ribbonController');
  * App Routes 
 */
 router.get('/', ribbonController.homepage);
-router.get('/blog', ribbonController.exploreBlog)
+router.get('/blog', ribbonController.exploreBlog);
 // router.get('/categories', ribbonController.exploreCategories);
 
+//switched to ejs, so calling the Contact function from ribbonController
 
-
+// router.get('/contact', ribbonController.insertDummyContactData);
 
 module.exports = router;
