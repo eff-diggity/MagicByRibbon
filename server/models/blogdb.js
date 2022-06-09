@@ -9,5 +9,7 @@ blogDb.once('open', function () {
 
 // Models
 require('./Category');
+require('./BlogPost');
+
 
 
