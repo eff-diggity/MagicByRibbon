@@ -8,12 +8,14 @@ router.use(express.urlencoded({ extended: true }));
 // require("../../../server/mongoose")
 // const path = require('path');
 const path2 = require("path");
+const { resolveNaptr } = require("dns");
 
 
 router.get('/clients/signup', function(req, res) {
-    res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
+    // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
+    res.render('sign-up');
   });
-router.post('/clients/signup', (req, res)=>{ //build client object from form data
+router.post('/clients/signup', async (req, res)=>{ //build client object from form data
     const client = new Client({
         userName: req.body.userName,
         email: req.body.email,
@@ -30,4 +32,18 @@ router.post('/clients/signup', (req, res)=>{ //build client object from form dat
     });
 });
 
+router.get('/clients/login', function(req, res){
+    res.render('login');
+})
+
+router.post('/clients/login', async (req, res)=>{
+
+    try {
+        const client = await Client.findByCredentials(req.body.email, req.body.password)
+        res.send(client);
+    }catch(error){
+        res.status(400).send()
+    }
+
+})
 module.exports = router;

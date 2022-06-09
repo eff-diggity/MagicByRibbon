@@ -22,7 +22,7 @@ router.get('/clients', function(req, res) {
     // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
   });
 
-  router.get('/clients/:id', (req, res)=>{
+  router.get('/clients/:id', (req, res)=>{ //Grabs single client from DB by pulling ID from route params
       const _id = req.params.id;
 
       Client.findById(_id).then((client)=>{
