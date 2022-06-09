@@ -3,7 +3,8 @@ const validator = require('validator');
 
 const Contact = mongoose.model(`Contact`, {
     name: {
-        type: String
+        type: String,
+        required: [true, "Name is required"]
     },
     email: {
         type: String,
