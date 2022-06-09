@@ -4,6 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser"); //Need to npm install
 const res = require("express/lib/response"); 
 const authRouter = require("./server/routes/auth-routes/auth-routes")
+const contactRouter = require("./server/routes/contactRoutes");
+
 const app = express();
 
 app.use(express.json()); //allows us to access req.body
@@ -16,6 +18,9 @@ app.use(express.static('public'));
 app.use(expressLayouts);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
+app.use(authRouter);//brings in our Auth routes from seperate router file
+app.use(contactRouter); //assists with viewing contact page
+
 
 require("./server/mongoose");
 
@@ -23,5 +28,6 @@ const port = process.env.PORT || 8080;
 
 const routes = require('./server/routes/ribbonRoutes.js')
 app.use('/', routes)
+const req = require("express/lib/request");
 
 app.listen(port, () => console.log(`server is running on ${port}`));

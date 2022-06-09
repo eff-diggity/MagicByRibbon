@@ -1,6 +1,7 @@
 const Category = require("../models/Category");
 const mongoose = require('mongoose');
 const BlogPost = require("../models/BlogPost");
+const Contact = require("../models/contact");
 
 // ******************************************
 // from video--->
@@ -44,6 +45,11 @@ exports.exploreBlog = async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occurred" });
     }
+}
+
+//adding contact to RibbonController to avoid multiple controllers
+exports.contact = async (req, res) => {
+    res.render('contact');
 }
 
 
