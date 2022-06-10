@@ -3,13 +3,16 @@ const express = require("express");
 //Auth Route Dependencies 
 const bodyParser = require("body-parser"); //Need to npm install
 const res = require("express/lib/response"); 
-const authRouter = require("./server/routes/auth-routes/auth-routes")
-const contactRouter = require("./server/routes/contactRoutes");
-
+const authRouter = require("./server/routes/auth-routes/auth-routes");
+const clientRouter = require("./server/routes/client-routes/client-routes");
 const app = express();
-
+const contactRouter = require("./server/routes/contactRoutes");
 app.use(express.json()); //allows us to access req.body
-app.use(authRouter);//brings in our Auth routes from separate router file
+
+app.use(authRouter);//brings in our Auth routes from seperate router file
+app.use(clientRouter);
+
+
 
 /***** EJS Configuration */
 const expressLayouts = require('express-ejs-layouts');
