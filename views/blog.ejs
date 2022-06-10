@@ -36,23 +36,21 @@
             <% } %>
 </div> -->
 
+
+<div calss="d-flex mb-2 align-items-center">
+    <h2>We're here in these bodies to get shit done!!</h2>
+</div>
+
+
+<!-- WHY IS THIS STYLED WEIRD????? -->
+
+<!-- blog post -->
 <section class="pb-4 pt-4">
-    <div calss="d-flex mb-2 align-items-center">
-        <h2>We’re here in these bodies to get shit done!!</h2>
-        <!-- not sure if need?? -->
-        <!-- <a href="/blog-latest" class="ms-auto">View More</a> -->
-    </div>
-
-
-    <!-- WHY IS THIS STYLED WEIRD????? 55ish min mark of tutorial -->
-
-    <!-- blog posts -->
-
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 py-4">
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
         <% if(categories !='' ) { %>
             <% categories.forEach(function(category, index) { %>
 
-                <a href="" class="col test-center category__link">
+                <a href="/categories/<%- category.name %>" class="col test-center category__link">
                     <div class="category__img category__img--large shadow">
                         <img src="img/<%- category.image %>" alt="<%- category.name %>" Loading="lazy">
                     </div>
@@ -62,6 +60,14 @@
                 </a>
                 <% }) %>
                     <% } %>
+
+                        <!-- NOT NEEDED NOW, MAYBE IN THE FUTURE AS SITE GROWS-->
+                        <!-- <a href="/categories" class="col text-center category__link">
+                            <div class="category__img shadow">
+                                <img src="img/herbs.png" alt="View All Posts" loading="lazy">
+                            </div>
+                            <div class="pt-1">View All Posts</div>
+                        </a> -->
     </div>
 
 
@@ -76,4 +82,4 @@
     </div> -->
 
 
-</section>
+    <!-- ADD LATEST 1:33:37 FOR LATER??? -->

@@ -21,7 +21,7 @@
 
 <!-- blog thumbnails--use?? -->
 
-<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+<!-- <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
     <a href="#" class="col test-center category__link">
         <div class="category__img shadow">
             <img src="https://i.imgur.com/A2NQtr0.png" alt="Plant Medicine" Loading="lazy">
@@ -51,5 +51,68 @@
     </a>
 
 
-</div>
+</div> -->
 <!-- blog thumbnails--end -->
+
+<!-- WHY IS THIS STYLED WEIRD????? 55ish min mark of tutorial -->
+
+<!-- blog posts -->
+<section class="pb-4 pt-4">
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+        <% if(categories !='' ) { %>
+            <% categories.forEach(function(category, index) { %>
+
+                <a href="/categories/<% " class="col test-center category__link">
+                    <div class="category__img category__img--large shadow">
+                        <img src="img/<%- category.image %>" alt="<%- category.name %>" Loading="lazy">
+                    </div>
+                    <div class="pt-1">
+                        <%- category.name %>
+                    </div>
+                </a>
+                <% }) %>
+                    <% } %>
+</section>
+
+<!-- NOT NEEDED NOW, MAYBE IN THE FUTURE AS SITE GROWS-->
+<!-- <a href="/categories" class="col text-center category__link">
+                            <div class="category__img shadow">
+                                <img src="img/herbs.png" alt="View All Posts" loading="lazy">
+                            </div>
+                            <div class="pt-1">View All Posts</div>
+                        </a> -->
+<!-- </div> -->
+
+
+<!-- blog card hard code template -->
+<!-- <div class="row row-cols-2 row-cols-ls-5 g-2 g-lg-3">
+        <a href="/posts/#" class="col text-center category__link">
+            <div class="category__img category__img--large shadow">
+                <img src="https://i.imgur.com/yxPOP6S.png" alt="view all" Loading="lazy">
+            </div>
+            <div class="pt-1">Come to me, O beloved mistress…</div>
+        </a>
+    </div> -->
+
+
+<!-- ADD LATEST 1:33:37 FOR LATER??? -->
+
+<!-- </section>
+
+<section class="pb-4 pt-4">
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+        <% if(categories !='' ) { %>
+            <% categories.forEach(function(category, index) { %>
+
+                <a href="" class="col test-center category__link">
+                    <div class="category__img category__img--large shadow">
+                        <img src="img/<%- category.image %>" alt="<%- category.name %>" Loading="lazy">
+                    </div>
+                    <div class="pt-1">
+                        <%- category.name %>
+                    </div>
+                </a>
+                <% }) %>
+                    <% } %>
+    </div>
+</section> -->

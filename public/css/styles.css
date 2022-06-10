@@ -24,7 +24,7 @@ body {
     /* header/footer banners */
 }
 
-. .bbrg {
+.bbrg {
     list-style-type: none;
 }
 
@@ -97,4 +97,8 @@ a {
     height: 200px;
     width: 100%;
     object-fit: cover;
+}
+
+.search-header {
+    align-items: center;
 }

@@ -24,4 +24,6 @@ const blogPostSchema = new mongoose.Schema({
     }
 });
 
+blogPostSchema.index({title: 'text', category: 'text', text: 'text' }); 
+
 module.exports = mongoose.model('BlogPost', blogPostSchema);
