@@ -1,6 +1,7 @@
 const Category = require("../models/Category");
 const mongoose = require('mongoose');
 const BlogPost = require("../models/BlogPost");
+const Contact = require("../models/contact");
 
 
 // ******************************************
@@ -73,6 +74,28 @@ exports.searchBlog = async (req, res) => {
 
 }
 
+//adding contact function info to RibbonController to avoid multiple controllers
+//following Form Controller youtube video from Francesca
+
+exports.contact = async (req, res) => {
+    res.render('contact');
+}
+
+
+async function insertDummyContactData() {
+    try {
+        Contact.insert([
+            {
+                "name": "Sam",
+                "emailAddress": "dummyemail@j.com",
+                "message": "test contact Message"
+            }
+        ]);
+    } catch (error) {
+        console.log('error,' + error)
+    }
+}
+// insertDummyContactData();
 
 /**
  * Get/plantPosts
