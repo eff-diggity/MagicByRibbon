@@ -8,6 +8,7 @@ const clientRouter = require("./server/routes/client-routes/client-routes");
 const app = express();
 
 app.use(express.json()); //allows us to access req.body
+
 app.use(authRouter);//brings in our Auth routes from seperate router file
 app.use(clientRouter);
 
