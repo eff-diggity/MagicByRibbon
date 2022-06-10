@@ -60,11 +60,12 @@ exports.exploreBlog = async (req, res) => {
  * SearchResults
  */
 exports.searchBlog = async (req, res) => {
-   try {
+    try {
         let searchTerm = req.body.searchTerm; //body bc coming from a form
         let blog = await BlogPost.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-        res.json(blog); test
-    res.render('searchResults', { title: 'Ribbon Search Results' });
+        //UN-COMMENT TO RUN SEARCH TEST
+        // res.json(blog); test 
+        res.render('searchResults', { title: 'Ribbon Search Results' });
 
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occurred" });
