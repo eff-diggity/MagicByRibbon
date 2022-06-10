@@ -3,14 +3,12 @@ const router = express.Router();
 const auth = require('../../middleware/auth-middleware')
 const session = require('express-session')
 
-// require('dotenv').config({path: "../../../.env"}); Currently doesn't work with .ENV file. Needs Refactor
 const Client = require("../../models/client"); //Import our mongoose client schema which we use to validate create new user
 router.use(express.json()); //allows us to access req.body
 router.use(express.urlencoded({ extended: true }));
  router.use(session({secret: 'ErgoSum'}))
 
-// require("../../../server/mongoose")
-// const path = require('path');
+
 const path2 = require("path");
 const { resolveNaptr } = require("dns");
 const expressLayouts = require('express-ejs-layouts');
@@ -18,7 +16,6 @@ const expressLayouts = require('express-ejs-layouts');
 
 
 router.get('/clients/signup', function(req, res) {
-    // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
     res.render('signup');
   });
 router.post('/clients/signup', async (req, res)=>{ //build client object from form data
@@ -27,7 +24,6 @@ router.post('/clients/signup', async (req, res)=>{ //build client object from fo
         email: req.body.email,
         password: req.body.password
     });
-    // console.log(client)
 
     try{
         await client.save()
@@ -37,13 +33,6 @@ router.post('/clients/signup', async (req, res)=>{ //build client object from fo
     }catch(error){
         res.status(400).send()
     }
-    // client.save().then((newClient)=>{ //this saved the client object to the database
-    //     res.status(201).send(newClient)
-    //     console.log(req.body)
-    // }).catch((error)=>{
-    //     res.status(400).send(error)
-    //     console.log(error)
-    // });
 });
 
 router.get('/clients/login', function(req, res){
@@ -57,7 +46,6 @@ router.post('/clients/login', async (req, res)=>{
         const jwtToken = await client.generateToken()
         req.session.client_id = client._id
         res.redirect('/clients/me')
-        // res.send({client, jwtToken});
     }catch(error){
         console.log(error)
         res.status(400).send()
@@ -76,17 +64,7 @@ router.get('/clients/me',  async function(req, res) {
     }catch(error){
         res.status(401).send("Error Authenticating")
     }
-
-        // Client.find({}).then((all_clients)=>{ //grabs all clients from DB
-        //     if(!all_clients){
-        //         return res.status(404).send("error");
-        //     }
-        //     res.status(200).send(all_clients);
-        // }).catch((error)=>{
-        //     res.status(404).send(error);
-        // })
-        // res.sendFile(path2.join(__dirname, '../../../views/sign-up.html'));
-      });
+});
 
 router.post('/clients/logout', auth, async (req, res)=>{
     try {

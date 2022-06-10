@@ -6,9 +6,6 @@ const ribbonController = require('../controllers/ribbonController');
 const path3 = require("path");
 const res = require("express/lib/response");
 
-router.get('/', ribbonController.contact);
-
-
 router.get('/contact', (req, res) => {
     res.render("contact")
 });

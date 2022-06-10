@@ -73,4 +73,4 @@ clientSchema.statics.findByCredentials = async (email, password)=>{
 }
 const Client = mongoose.model('Client', clientSchema);
 
-module.exports = Client
+module.exports = Client;
