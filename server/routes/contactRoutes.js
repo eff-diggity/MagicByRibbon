@@ -6,13 +6,14 @@ const ribbonController = require('../controllers/ribbonController');
 const path3 = require("path");
 const res = require("express/lib/response");
 
+router.get('/', ribbonController.contact);
+
 
 router.get('/contact', (req, res) => {
     res.render("contact")
-    // res.sendFile(path3.join(__dirname, "../../views/contact.ejs"))
 });
 
-router.post('/contact', (req, res) => { //build client object from form data
+router.post('/contact', (req, res) => {
     const contact = new Contact({
         name: req.body.name,
         email: req.body.email,
@@ -20,7 +21,7 @@ router.post('/contact', (req, res) => { //build client object from form data
     });
     console.log(contact)
 
-    contact.save().then((newContact) => { //this saved the client object to the database
+    contact.save().then((newContact) => {
         res.send(newContact)
         console.log(req.body)
     }).catch((error) => {
