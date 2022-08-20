@@ -2,6 +2,7 @@ const Category = require("../models/Category");
 const mongoose = require('mongoose');
 const BlogPost = require("../models/BlogPost");
 const Contact = require("../models/contact");
+const about = require("../models/about")
 /**
  * Get/
  * Homepage
@@ -12,6 +13,21 @@ exports.homepage = async (req, res) => {
         const categories = await Category.find({}).limit(limitNumber);
 
         res.render('index', { title: 'Ribbon Home', categories });
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occurred" });
+    }
+}
+
+/**
+ * Get/
+ * About
+ */
+exports.about = async (req, res) => {
+    try {//base query to grab categories
+        const limitNumber = 5; //CHANGE WHEN ADD BLOG CATEGORIES/add shop and workshop page
+        const categories = await Category.find({}).limit(limitNumber);
+
+        res.render('about', { title: 'Ribbon About', categories });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occurred" });
     }

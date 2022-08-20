@@ -7,6 +7,7 @@ const ribbonController = require('../controllers/ribbonController');
 */
 router.get('/', ribbonController.homepage);
 router.get('/blog', ribbonController.exploreBlog);
+router.get('/about', ribbonController.about);
 
 router.post('/searchResults', ribbonController.searchBlog);
 module.exports = router;

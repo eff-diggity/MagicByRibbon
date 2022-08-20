@@ -10,18 +10,18 @@ router.use(express.urlencoded({ extended: true }));
 
 const path2 = require("path");
 
-  router.get('/clients/:id', (req, res)=>{ //Grabs single client from DB by pulling ID from route params
-      const _id = req.params.id;
+router.get('/clients/:id', (req, res) => { //Grabs single client from DB by pulling ID from route params
+    const _id = req.params.id;
 
-      Client.findById(_id).then((client)=>{
-        if(!client){
-            return res.status(404).send(error, "resource not found");        
+    Client.findById(_id).then((client) => {
+        if (!client) {
+            return res.status(404).send(error, "resource not found");
         }
         console.log(client)
         res.send(client)
-      }).catch((error)=>{
+    }).catch((error) => {
         res.status(404).send(error);
-      });
-  });
+    });
+});
 
-  module.exports = router;
+module.exports = router;
